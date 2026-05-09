@@ -282,9 +282,13 @@ tr:hover td{background:#E3F2FD!important}
 
 /* Summary inside roster-container: disable per-person freeze, no sticky on summary */
 #roster-container .summary-table td,
-#roster-container .summary-table th{position:static!important;left:auto!important;box-shadow:none!important}
-#roster-container .summary-table th.day-col{background:#0D2137!important}
-#roster-container .summary-table td.day-col{background:#fff!important}
+#roster-container .summary-table th{position:static!important;left:auto!important;box-shadow:none!important;min-width:unset!important;max-width:unset!important;width:auto!important}
+#roster-container .summary-table th.day-col{background:#0D2137!important;width:48px!important;min-width:48px!important}
+#roster-container .summary-table td.day-col{background:#fff!important;width:48px!important;min-width:48px!important}
+#roster-container .summary-table th.day-col.has-override{width:auto!important;min-width:80px!important}
+#roster-container .summary-table td.day-col.has-override{width:auto!important;min-width:80px!important}
+#roster-container .summary-table th.sh-label,
+#roster-container .summary-table td.sh-label{width:180px!important;min-width:180px!important;max-width:180px!important}
 
 /* ── Coverage freeze ── */
 #coverage-container{overflow-x:auto;-webkit-overflow-scrolling:touch}
