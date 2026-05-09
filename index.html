@@ -183,17 +183,21 @@ tr:hover td{background:#E3F2FD!important}
   position:sticky;
   left:0;
   z-index:12;
-  min-width:180px;
   width:180px;
+  min-width:180px;
   max-width:180px;
   background:#0D2137;
   color:#fff;
   text-align:left;
   padding:8px 12px;
-  box-shadow:3px 0 8px rgba(0,0,0,.18);
+  box-shadow:4px 0 0 0 #1a3a5c, 4px 0 8px rgba(0,0,0,.18);
   white-space:normal;
   vertical-align:middle;
-  border-right:2px solid #1a3a5c;
+  border-right:none;
+  /* Force subpixel rendering to not bleed into adjacent column */
+  transform:translateZ(0);
+  will-change:transform;
+  isolation:isolate;
 }
 .summary-table td.sh-label{
   background:#fff;
@@ -1327,7 +1331,7 @@ function renderSummaryView(){
   // All day <th> use class "day-col" (uniform width + no weekend bg tint)
   // Weekend: only text color changes via "we-day" class
   // Calculate exact table width: 180px label + 48px per day column
-  var tableWidth=(180 + days*48)+'px';
+  var tableWidth=Math.ceil(180 + days*48)+'px';
   var html='<div id="summary-scroll-wrap"><table class="summary-table" style="width:'+tableWidth+';min-width:'+tableWidth+'"><thead><tr>';
   html+='<th class="sh-label">Shift</th>';
   for(var d=1;d<=days;d++){
